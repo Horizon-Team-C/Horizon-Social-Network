@@ -1,0 +1,14 @@
+
+FROM node:24-bookworm
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+EXPOSE 8081
+
+CMD ["npx", "expo", "start", "--host", "lan", "--port", "8081"]
